@@ -21,7 +21,7 @@ public class Solid {
 
         int suma = 0;
         for(Vehicle v:queueVehicles) suma += v.getTicketPrice();
-        System.out.println("Income from ticket sales "+suma+" kn");
+        System.out.println("Income from ticket sales "+suma+" kn\n");
 
 
         trains.add(new SmallTrain());
@@ -29,13 +29,23 @@ public class Solid {
 
         Worker w=new Worker();
 
+        //System.out.println("\n\n"+queueVehicles.size()+"\n\n");
+
         for (int i = 0; i < 14; i++) {
+            w.checkGas(queueVehicles.get(0));
+            w.checkBattery(queueVehicles.get(0));
+
             w.parkVehicle(queueVehicles.get(0),trains);
+            System.out.println();
+
             queueVehicles.remove(0);
         }
 
 
-        System.out.println("Worker's salary "+w.getSalary()+" kn");
+        System.out.println("Worker's salary "+w.getSalary()+" kn\n");
+
+
+
 
     }
 

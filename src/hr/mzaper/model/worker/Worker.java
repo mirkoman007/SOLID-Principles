@@ -8,12 +8,14 @@ import hr.mzaper.model.vehicle.*;
 import java.util.ArrayList;
 
 public class Worker {
-    static final float percentage=0.1f;
+    static final float salaryPercentage =0.1f;
     int salary=0;
 
     public int getSalary() {
         return salary;
     }
+
+
 
     public void parkVehicle(Vehicle vehicle, ArrayList<Train> trains) {
 
@@ -21,9 +23,9 @@ public class Worker {
 
             for (Train t:trains) {
                 if(t.getClass().getName().equals(SmallTrain.class.getName())){
-                    if(t.addVehicle(vehicle)==true){
+                    if(t.addVehicle(vehicle)){
                         System.out.println(vehicle.getClass().getSimpleName()+" successfully parked on the train");
-                        salary+=(vehicle.getTicketPrice()*percentage);
+                        salary+=(vehicle.getTicketPrice()* salaryPercentage);
                     }else {
                         System.out.println("Error: There is no parking space on the train.");
                     }
@@ -34,9 +36,9 @@ public class Worker {
         else if(vehicle.getClass().equals(Bus.class) || vehicle.getClass().equals(Truck.class)){
             for (Train t:trains) {
                 if(t.getClass().getName().equals(BigTrain.class.getName())){
-                    if(t.addVehicle(vehicle)==true){
+                    if(t.addVehicle(vehicle)){
                         System.out.println(vehicle.getClass().getSimpleName()+" successfully parked on the train");
-                        salary+=(vehicle.getTicketPrice()*percentage);
+                        salary+=(vehicle.getTicketPrice()* salaryPercentage);
                     }else {
                         System.out.println("Error: There is no parking space on the train.");
                     }
@@ -46,5 +48,32 @@ public class Worker {
         }
 
 
+    }
+
+    public void checkGas(Vehicle v) {
+
+        if(v.getGasPercentage()<10){
+            System.out.println("The "+v.getClass().getSimpleName()+" has less than 10% gas");
+            System.out.println("Refueling "+v.getClass().getSimpleName()+" in progress....");
+            System.out.println(v.getClass().getSimpleName()+" refueled");
+            v.refuelGas();
+        }
+        else
+        {
+            System.out.println("The "+v.getClass().getSimpleName()+" has "+v.getGasPercentage()+"% gas");
+        }
+    }
+
+    public void checkBattery(Vehicle v) {
+        if(v.getBatteryPercentage()<10){
+            System.out.println("The "+v.getClass().getSimpleName()+" has less than 10% battery");
+            System.out.println("Charging "+v.getClass().getSimpleName()+" battery in progress....");
+            System.out.println(v.getClass().getSimpleName()+" battery charged");
+            v.chargeBattery();
+        }
+        else
+        {
+            System.out.println("The "+v.getClass().getSimpleName()+" has "+v.getBatteryPercentage()+"% battery");
+        }
     }
 }

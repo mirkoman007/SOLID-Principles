@@ -7,12 +7,16 @@ import hr.mzaper.model.vehicle.*;
 
 import java.util.ArrayList;
 
-public class Worker {
-    static final float salaryPercentage =0.1f;
-    int salary=0;
+public abstract class Employee {
+    public Employee(float salaryPercentage) {
+        this.salaryPercentage = salaryPercentage;
+    }
 
-    public int getSalary() {
-        return salary;
+    float salaryPercentage;
+    float salary=0;
+
+    public float getSalary() {
+        return Math.round(salary * 100.0f) / 100.0f;
     }
 
 

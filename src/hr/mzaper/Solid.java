@@ -47,7 +47,7 @@ public class Solid {
 
         Employee bonusEmployee=new BonusEmployee();
 
-        for (int i = 0; i < queueVehicles.size(); i++) {
+        while (!queueVehicles.isEmpty()){
             bonusEmployee.checkGas(queueVehicles.get(0));
             bonusEmployee.checkBattery(queueVehicles.get(0));
 

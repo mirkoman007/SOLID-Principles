@@ -29,34 +29,32 @@ public class Solid {
         trains.add(new BigTrain());
 
 
-        Employee basicEmployee=new BasicEmployee();
 
         for (int i = 0; i < 5; i++) {
-            basicEmployee.checkGas(queueVehicles.get(0));
-            basicEmployee.checkBattery(queueVehicles.get(0));
+            BasicEmployee.getInstance().checkGas(queueVehicles.get(0));
+            BasicEmployee.getInstance().checkBattery(queueVehicles.get(0));
 
-            basicEmployee.parkVehicle(queueVehicles.get(0),trains);
+            BasicEmployee.getInstance().parkVehicle(queueVehicles.get(0),trains);
             System.out.println();
 
             queueVehicles.remove(0);
         }
-        System.out.println(basicEmployee.getClass().getSimpleName()+"'s salary "+basicEmployee.getSalary()+" kn\n");
+        System.out.println(BasicEmployee.getInstance().getClass().getSimpleName()+"'s salary "+BasicEmployee.getInstance().getSalary()+" kn\n");
 
         System.out.println("=================================================================");
 
 
-        Employee bonusEmployee=new BonusEmployee();
 
         while (!queueVehicles.isEmpty()){
-            bonusEmployee.checkGas(queueVehicles.get(0));
-            bonusEmployee.checkBattery(queueVehicles.get(0));
+            BonusEmployee.getInstance().checkGas(queueVehicles.get(0));
+            BonusEmployee.getInstance().checkBattery(queueVehicles.get(0));
 
-            bonusEmployee.parkVehicle(queueVehicles.get(0),trains);
+            BonusEmployee.getInstance().parkVehicle(queueVehicles.get(0),trains);
             System.out.println();
 
             queueVehicles.remove(0);
         }
-        System.out.println(bonusEmployee.getClass().getSimpleName()+"'s salary "+bonusEmployee.getSalary()+" kn\n");
+        System.out.println(BonusEmployee.getInstance().getClass().getSimpleName()+"'s salary "+BonusEmployee.getInstance().getSalary()+" kn\n");
 
 
 

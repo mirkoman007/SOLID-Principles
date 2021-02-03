@@ -1,8 +1,15 @@
 package hr.mzaper.model.worker;
 
-public class BonusEmployee extends Employee{
+public final class BonusEmployee extends Employee{
+    private static BonusEmployee instance;
 
-    public BonusEmployee() {
+    private BonusEmployee() {
         super(0.11f);
+    }
+
+    public static BonusEmployee getInstance(){
+        if(instance==null)
+            instance=new BonusEmployee();
+        return instance;
     }
 }
